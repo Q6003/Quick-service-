@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Service</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>⚡ Quick Service</h1>
+  <p>घर बैठे भरोसेमंद सर्विस बुक करें</p>
+</header>
+
+<div class="container">
+
+  <h2>हमारी सेवाएं</h2>
+
+  <div class="services">
+
+    <div class="card" onclick="selectService('Electric Service')">
+      ⚡
+      <h3>इलेक्ट्रिक सर्विस</h3>
+      <p>घर की सभी इलेक्ट्रिक समस्याएं</p>
+    </div>
+
+    <div class="card" onclick="selectService('Geyser Service')">
+      🚿
+      <h3>गीजर सर्विस</h3>
+      <p>गीजर रिपेयर और इंस्टॉलेशन</p>
+    </div>
+
+    <div class="card" onclick="selectService('Water Tank Cleaning')">
+      🛢️
+      <h3>वाटर टैंक क्लीनिंग</h3>
+      <p>पानी की टंकी की सफाई</p>
+    </div>
+
+    <div class="card" onclick="selectService('Plumbing Service')">
+      🔧
+      <h3>प्लंबिंग सर्विस</h3>
+      <p>नल और पाइप की समस्या</p>
+    </div>
+
+  </div>
+
+  <h2>सर्विस बुक करें</h2>
+
+  <form id="bookingForm">
+
+    <input type="text" id="name" placeholder="आपका नाम" required>
+
+    <input type="tel" id="phone" placeholder="मोबाइल नंबर" required>
+
+    <input type="text" id="address" placeholder="पूरा पता" required>
+
+    <select id="service" required>
+      <option value="">सर्विस चुनें</option>
+      <option>Electric Service</option>
+      <option>Geyser Service</option>
+      <option>Water Tank Cleaning</option>
+      <option>Plumbing Service</option>
+    </select>
+
+    <button type="submit">बुकिंग करें</button>
+
+  </form>
+
+  <p id="message"></p>
+
+</div>
+
+<footer>
+  © 2026 Quick Service | Home Services
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
