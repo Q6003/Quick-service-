@@ -8,6 +8,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+// Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAnnTYAgEK8AeHS5pMSr0X8QnFrJXWKdIM",
   authDomain: "quick-service-bb434.firebaseapp.com",
@@ -19,12 +20,16 @@ const firebaseConfig = {
 };
 
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+
+// Initialize Firestore Database
 const db = getFirestore(app);
 
 
-function selectService(serviceName) {
+// Service Select Function
+window.selectService = function(serviceName) {
 
   const serviceSelect =
     document.getElementById("service");
@@ -36,34 +41,38 @@ function selectService(serviceName) {
     document
       .getElementById("bookingForm")
       .scrollIntoView({
-        behavior: "smooth"
+        behavior: "smooth",
+        block: "center"
       });
 
   }
 
-}
+};
 
 
+// Booking Form Submit
 document
   .getElementById("bookingForm")
-  .addEventListener("submit", async function (event) {
+  .addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
 
+    // Get User Data
     const name =
-      document.getElementById("name").value;
+      document.getElementById("name").value.trim();
 
     const phone =
-      document.getElementById("phone").value;
+      document.getElementById("phone").value.trim();
 
     const address =
-      document.getElementById("address").value;
+      document.getElementById("address").value.trim();
 
     const service =
       document.getElementById("service").value;
 
 
+    // Check Empty Fields
     if (
       name === "" ||
       phone === "" ||
@@ -71,16 +80,19 @@ document
       service === ""
     ) {
 
-      alert("कृपया सभी जानकारी भरें");
+      alert("कृपया सभी जानकारी भरें।");
 
       return;
 
     }
 
 
-    if (phone.length !== 10) {
+    // Mobile Number Validation
+    const phonePattern = /^[0-9]{10}$/;
 
-      alert("कृपया सही 10 अंकों का मोबाइल नंबर डालें");
+    if (!phonePattern.test(phone)) {
+
+      alert("कृपया सही 10 अंकों का मोबाइल नंबर डालें।");
 
       return;
 
@@ -89,6 +101,7 @@ document
 
     try {
 
+      // Save Booking to Firebase Firestore
       await addDoc(
         collection(db, "bookings"),
 
@@ -104,19 +117,20 @@ document
 
           status: "नई बुकिंग",
 
-          createdAt:
-            serverTimestamp()
+          createdAt: serverTimestamp()
 
         }
 
       );
 
 
+      // Success Message
       alert(
-        "🎉 आपकी बुकिंग सफलतापूर्वक हो गई!"
+        "🎉 आपकी बुकिंग सफलतापूर्वक हो गई!\nहम जल्द आपसे संपर्क करेंगे।"
       );
 
 
+      // Reset Form
       document
         .getElementById("bookingForm")
         .reset();
@@ -124,7 +138,8 @@ document
 
     } catch (error) {
 
-      console.error(error);
+      console.error("Booking Error:", error);
+
 
       alert(
         "बुकिंग सेव नहीं हुई। कृपया दोबारा कोशिश करें।"
