@@ -1,106 +1,172 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-    background: #f5f5f5;
-    color: #333;
+  background: #f5f7fb;
+  color: #333;
 }
 
+/* Header */
+
 header {
-    background: #0d6efd;
-    color: white;
-    padding: 15px;
-    text-align: center;
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
 }
 
 header h1 {
-    font-size: 28px;
+  font-size: 30px;
+  margin-bottom: 8px;
 }
 
 header p {
-    margin-top: 5px;
+  font-size: 16px;
 }
+
+/* Main Container */
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 25px 15px;
+}
+
+.container h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Services */
 
 .services {
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
 }
 
-.services h2 {
-    text-align: center;
-    margin-bottom: 20px;
+.card {
+  background: white;
+  padding: 25px 15px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
 }
 
-.service-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.service-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.card .icon {
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
-.service-card h3 {
-    margin-bottom: 10px;
+.card h3 {
+  margin-bottom: 10px;
 }
 
-.service-card button {
-    background: #0d6efd;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 5px;
-    cursor: pointer;
+.card p {
+  color: #666;
+  font-size: 14px;
 }
 
-.booking {
-    margin: 20px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-}
+/* Booking Form */
 
-.booking h2 {
-    text-align: center;
-    margin-bottom: 15px;
+.booking-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 30px auto;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
 input,
-select,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+select {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 16px;
 }
 
-textarea {
-    height: 100px;
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #0d6efd;
 }
 
-.booking button {
-    width: 100%;
-    padding: 12px;
-    background: #198754;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+button {
+  width: 100%;
+  padding: 14px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 17px;
+  cursor: pointer;
 }
+
+button:hover {
+  background: #157347;
+}
+
+#message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Footer */
 
 footer {
-    text-align: center;
-    background: #222;
-    color: white;
-    padding: 15px;
-    margin-top: 20px;
-      }
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 18px;
+  margin-top: 30px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 25px;
+  }
+
+  .container {
+    padding: 15px 10px;
+  }
+
+  .services {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .card {
+    padding: 18px 10px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+
+  .booking-box {
+    padding: 18px;
+  }
+
+}
